@@ -1,0 +1,30 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a routerLink="/" class="brand" (click)="closeNav()" aria-label="BRAAM Family home">
+      <span class="brand-badge">B</span><span class="brand-copy"><strong>BRAAM <b>Family</b></strong><small>A FIRE FELLOWSHIP</small></span>
+    </a>
+    <button class="mobile-menu" aria-label="Toggle navigation" [attr.aria-expanded]="menuOpen" (click)="menuOpen = !menuOpen"><i></i><i></i></button>
+    <nav class="primary-nav" [class.open]="menuOpen" aria-label="Main navigation">
+      <a routerLink="/" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}" (click)="closeNav()">Home</a>
+      <div class="nav-dropdown" [class.expanded]="openDropdown === 'about'"><button (click)="toggleDropdown('about')">About <span>⌄</span></button><div class="dropdown-menu"><a routerLink="/about" routerLinkActive="nav-active" (click)="closeNav()">Our Story</a><a routerLink="/vision" routerLinkActive="nav-active" (click)="closeNav()">Vision &amp; Mission</a><a routerLink="/organigram" routerLinkActive="nav-active" (click)="closeNav()">Organigram</a><a routerLink="/schedule" routerLinkActive="nav-active" (click)="closeNav()">Schedule</a></div></div>
+      <div class="nav-dropdown" [class.expanded]="openDropdown === 'media'"><button (click)="toggleDropdown('media')">Media <span>⌄</span></button><div class="dropdown-menu"><a routerLink="/preachings" routerLinkActive="nav-active" (click)="closeNav()">Preachings</a><a routerLink="/workers" routerLinkActive="nav-active" (click)="closeNav()">Workers Teachings</a><a routerLink="/blog" routerLinkActive="nav-active" (click)="closeNav()">Blog</a><a routerLink="/testimonies" routerLinkActive="nav-active" (click)="closeNav()">Testimonies</a></div></div>
+      <div class="nav-dropdown" [class.expanded]="openDropdown === 'vision'"><button (click)="toggleDropdown('vision')">Vision <span>⌄</span></button><div class="dropdown-menu"><a routerLink="/vision" routerLinkActive="nav-active" (click)="closeNav()">Vision &amp; Mission</a><a routerLink="/organigram" routerLinkActive="nav-active" (click)="closeNav()">Organigram</a><a routerLink="/schedule" routerLinkActive="nav-active" (click)="closeNav()">Gathering Schedule</a></div></div>
+      <a routerLink="/shop" routerLinkActive="nav-active" (click)="closeNav()">Shop</a>
+      <a class="donate-nav" routerLink="/donate" routerLinkActive="nav-active" (click)="closeNav()">Donate</a>
+      <a routerLink="/connect" routerLinkActive="nav-active" (click)="closeNav()">Connect</a>
+      <a routerLink="/contact" routerLinkActive="nav-active" (click)="closeNav()">Contact</a>
+      <a class="join-nav" routerLink="/join" (click)="closeNav()">Join Us</a>
+    </nav>
+  </div>
+</header>
+<router-outlet />
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand-block"><a routerLink="/" class="brand"><span class="brand-badge">B</span><span class="brand-copy"><strong>BRAAM <b>Family</b></strong><small>A FIRE FELLOWSHIP</small></span></a><p>Believers with a Renewed And Awakened Mindset — a Spirit-inspired movement passionate about spreading the Kingdom of God through connection, teaching, and outreach.</p><div class="footer-social"><a href="https://facebook.com" aria-label="Facebook">f</a><a href="https://wa.me/27782291246" aria-label="WhatsApp">◉</a><a href="mailto:info@braamfamily.co.za" aria-label="Email">✉</a></div></div>
+    <div class="footer-column"><h4>WHO WE ARE</h4><a routerLink="/about">About Us</a><a routerLink="/vision">Vision &amp; Mission</a><a routerLink="/organigram">Organigram</a><a routerLink="/schedule">Schedule</a><a routerLink="/join">Register</a></div>
+    <div class="footer-column"><h4>MEDIA</h4><a routerLink="/preachings">Preachings</a><a routerLink="/workers">Workers Teachings</a><a routerLink="/blog">Blog</a><a routerLink="/testimonies">Testimonies</a></div>
+    <div class="footer-column"><h4>GET INVOLVED</h4><a routerLink="/donate">Donate</a><a routerLink="/shop">Shop</a><a routerLink="/connect">Social Media</a><a routerLink="/contact">Contact Us</a></div>
+  </div>
+  <div class="footer-contact"><span>📍 286 Weltevreden Rd, Blackheath, Cresta, Randburg</span><span>◷ Sunday 10:00–12:30 · Monday 18:00–20:30</span><a href="mailto:info@braamfamily.co.za">✉ info&#64;braamfamily.co.za</a><a href="tel:+27782291246">⌕ +27 78 229 1246</a></div>
+  <div class="footer-bottom"><span>© 2026 BRAAM Family Church. All rights reserved.</span><span>Founded 2009 · Johannesburg, South Africa</span><span class="footer-credit"><a href="https://github.com/LulamileMkhungela" target="_blank" rel="noopener noreferrer" aria-label="Website coded by Lulamile Mkhungela — view GitHub profile">&lt;/&gt; Coded by <b>Lulamile Mkhungela</b></a></span></div>
+</footer>
