@@ -17,5 +17,7 @@ export const routes: Routes = [
   { path: 'contact', component: ScreenPage, data: { page: 'contact' }, title: 'Contact Us | BRAAM Family' },
   { path: 'connect', component: ScreenPage, data: { page: 'connect' }, title: 'Connect | BRAAM Family' },
   { path: 'join', component: ScreenPage, data: { page: 'join' }, title: 'Join the Family | BRAAM Family' },
+  { path: 'returns', component: ScreenPage, data: { page: 'returns' }, title: 'Return Policy | BRAAM Family' },
+  { path: 'privacy', component: ScreenPage, data: { page: 'privacy' }, title: 'Privacy Policy | BRAAM Family' },
   { path: '**', redirectTo: '' }
 ];

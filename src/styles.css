@@ -1,6 +1,5 @@
-/*!
+/*
  * BRAAM Family Church — https://braamfamily.co.za
- * Coded by Lulamile Mkhungela (https://github.com/LulamileMkhungela)
  * © 2026 BRAAM Family Church. All rights reserved.
  */
 @import '@fontsource/dm-sans/400.css';
@@ -8,9 +7,7 @@
 @import '@fontsource/dm-sans/600.css';
 @import '@fontsource/dm-sans/700.css';
 @import '@fontsource/dm-serif-display/400.css';
-/*!
- * BRAAM Family Church — Coded by Lulamile Mkhungela (https://github.com/LulamileMkhungela)
- */
+
 
 :root{--bg:#08080d;--panel:#111119;--panel-2:#14141d;--line:#25242d;--text:#f4f0e8;--muted:#a4a1ac;--soft:#777580;--gold:#d4ad43;--orange:#ed642d;--gradient:linear-gradient(105deg,#ef642c 0%,#db9b35 55%,#cbae4c 100%);--sans:'DM Sans',Arial,sans-serif;--serif:'DM Serif Display',Georgia,serif;color-scheme:dark}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{color:inherit}img{max-width:100%;display:block}h1,h2,h3,h4,p{margin-top:0}h1,h2{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.015em}h1 em,h2 em{color:var(--gold);font-style:normal}p{color:var(--muted)}::selection{background:#c99635;color:#08080d}
@@ -62,3 +59,104 @@
 @media(max-width:560px){.connect-cards{grid-template-columns:1fr}.join-intro{padding-bottom:10px}.join-flow{padding-top:24px}.join-flow .stepper>div small{font-size:7px}.join-flow .stepper>div+div:before{left:-50%;right:50%}}
 
 .empty-state{padding:26px;border:1px dashed #37343f;border-radius:10px;text-align:center;color:#9a96a1;font-size:11px}
+
+/* User-selectable light theme. Preferences persist across visits. */
+body.light-theme{--bg:#f6f4ef;--panel:#fff;--panel-2:#f0eee8;--line:#dedbd2;--text:#25221d;--muted:#5e5a53;--soft:#777168;color-scheme:light;background:#f6f4ef;color:#25221d}
+body.light-theme .site-header,body.light-theme .site-footer,body.light-theme .primary-nav{background:#fff;border-color:#e4e1da}
+body.light-theme .primary-nav>a,body.light-theme .nav-dropdown>button,body.light-theme .brand-copy strong,body.light-theme .footer-column a,body.light-theme .footer-contact,body.light-theme .footer-bottom{color:#37332d}
+body.light-theme .brand-copy small,body.light-theme .footer-column h4{color:#817a6d}
+body.light-theme .mobile-menu{background:#f7f5f0;border-color:#ddd8ce}body.light-theme .mobile-menu i{background:#332f29}
+body.light-theme .dropdown-menu,body.light-theme .info-panel,body.light-theme .feature-card,body.light-theme .media-card,body.light-theme .testimony-card,body.light-theme .promo-card,body.light-theme .stay-row,body.light-theme .cart-drawer,body.light-theme .detail-modal,body.light-theme .checkout-modal,body.light-theme .product-modal{background:#fff;border-color:#e2ded4;color:#29251f}
+body.light-theme .info-panel p,body.light-theme .feature-card p,body.light-theme .media-card p,body.light-theme .body-copy,body.light-theme .footer-brand-block>p,body.light-theme .giving-side ul,body.light-theme .contact-tile>b,body.light-theme .contact-tile>a,body.light-theme .give-online>p{color:#5d584f}
+body.light-theme .content-section,body.light-theme .home-section{color:#29251f}
+body.light-theme .page-intro-hero:not(.donate-hero){background-color:#eeece6;color:#29251f}
+body.light-theme .page-intro-hero>p:not(.eyebrow),body.light-theme .subcopy{color:#5d584f}
+body.light-theme .bank-panel>div{border-color:#e1ddd5}body.light-theme .bank-panel>div b{color:#29251f}body.light-theme .bank-panel>div span{color:#6c665d}
+body.light-theme .amount-chips button,body.light-theme .preference-actions button{background:#f6f4ef;color:#39352e;border-color:#d8d3c9}
+body.light-theme .give-quote{background:#f5f0e3;color:#514939}
+body.light-theme input,body.light-theme textarea,body.light-theme select{background:#fff;color:#28241f;border-color:#d8d3c9}
+body.light-theme .outline-button{color:#39352e;border-color:#aaa395}body.light-theme .dropdown-menu{background:#fff}
+body.light-theme .ticker{background:#eeeae1;border-color:#e0dbd0}body.light-theme .ticker strong{color:#39352e}body.light-theme .ticker small{color:#696359}
+body.light-theme .scripture-band{background:#efebe2;color:#39352e}
+body.light-theme .payment-option{background:#fff;border-color:#ddd8ce;color:#2f2a23}
+.payment-setup-note{display:grid;gap:4px;padding:13px 15px;border:1px solid #88713b;border-radius:8px;background:#211e17;color:#e2c36a;font-size:11px;line-height:1.55}
+.payment-setup-note span{color:#c5bda8}
+body.light-theme .payment-setup-note{background:#fff8e7;color:#735a14}body.light-theme .payment-setup-note span{color:#61583f}
+@media(max-width:800px){body.light-theme .primary-nav{background:#fff}body.light-theme .dropdown-menu{box-shadow:none}}
+@media(max-width:560px){.payment-setup-note{font-size:10px}}
+body.light-theme .home-hero{background:linear-gradient(90deg,#f6f4eff2 0%,#f6f4efdc 58%,#f6f4ef55 100%),url('/images/church-worship.jpg') right center/cover no-repeat,#f6f4ef}
+body.light-theme .home-hero:after{background:linear-gradient(0deg,#f6f4ef 0%,transparent 24%,transparent 78%,#f6f4ef99)}
+body.light-theme .hero-intro,body.light-theme .hero-scroll,body.light-theme .hero-content h1{color:#29251f}
+body.light-theme .home-hero .eyebrow{color:#8a6720}
+body.light-theme .home-section h2,body.light-theme .content-section h2,body.light-theme .home-section h3,body.light-theme .content-section h3{color:#29251f}
+body.light-theme .stats-row>div,body.light-theme .event-details>div,body.light-theme .amount-chips button{background:#fff;border-color:#e2ded4}
+body.light-theme .stats-row b,body.light-theme .event-details b{color:#39352e}
+body.light-theme .gold-copy,body.light-theme .gold-label,body.light-theme .small-link,body.light-theme .text-link{color:#896919}
+body.light-theme .feature-card h3,body.light-theme .media-card h3,body.light-theme .promo-card h3{color:#2c2822}
+body.light-theme .feature-card,body.light-theme .media-card{background:#fff}
+body.light-theme .photo-caption{background:#ffffffed;border-color:#dedbd2}
+body.light-theme .photo-caption span{color:#39352e}
+body.light-theme .donate-hero{background:radial-gradient(ellipse at 55% 65%,#f0e6d5,transparent 55%),#f6f4ef}
+body.light-theme .footer-social a{background:#f0eee8;color:#5a5140}
+body.light-theme .footer-contact span,body.light-theme .footer-contact a{color:#514c43}
+body.light-theme .nav-dropdown>button span{color:#686154}
+body.light-theme .preference-actions button:hover{color:#775a17}
+body.light-theme .outline-button{background:#fff}
+body.light-theme .center-cta,body.light-theme .belong-cta{background:#eeebe3;color:#302b23}
+body.light-theme .media-preview{border-color:#e4e0d8}
+@media(min-width:801px) and (max-width:1100px){.header-inner{gap:12px}.primary-nav{gap:10px}.primary-nav>a,.nav-dropdown>button{font-size:10px}.preference-actions{gap:4px}.preference-actions button{padding:6px 7px;font-size:8px}.brand-copy strong{font-size:18px}}
+
+/* Compact, consistent rhythm across long pages and payment panels. */
+:root{--section-rhythm:clamp(2.75rem,5.4vw,4.75rem)}
+.home-section,.content-section{padding-block:var(--section-rhythm)}
+.page-intro-hero{padding-block:clamp(3rem,5.7vw,4.8rem)}
+.center-cta{padding-block:clamp(3rem,5.2vw,4.5rem)}
+.demo-payment-box{display:grid;grid-template-columns:1fr auto;gap:9px 14px;align-items:center;margin-top:16px;padding:15px;border:1px solid #8d7136;border-radius:10px;background:linear-gradient(135deg,#211e17,#17161a)}
+.demo-payment-box>div{display:grid;gap:1px}.demo-payment-box>div b{color:#f1d47a;font-size:12px}.demo-payment-box>div small,.demo-payment-box>small{color:#c3bdaf;font-size:9px;line-height:1.55}.demo-payment-box>small{grid-column:1/-1}.demo-payment-box .gradient-button{min-height:39px;padding:0 13px;font-size:10px;white-space:nowrap}
+.demo-receipt{display:grid;gap:3px;margin-top:10px;padding:12px 14px;border:1px solid #548257;border-radius:9px;background:#122017;color:#b3e0ac;font-size:11px}.demo-receipt span{font-size:10px}.demo-receipt small{color:#c4cfbf;font-size:9px}
+.demo-quick-link{display:block;margin:10px auto 0;padding:8px 12px;border:1px dashed #937943;border-radius:8px;background:transparent;color:#d5b956;font-size:10px;cursor:pointer}.demo-quick-link:hover{background:#211e17}
+.five-p-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.five-p-grid .info-panel{padding:16px}.five-p-grid .info-panel>b{display:grid;place-items:center;width:29px;height:29px;margin-bottom:10px;border-radius:50%;background:#292116;color:#e3bd55;font-size:10px}.five-p-grid .info-panel h3{font-size:13px;line-height:1.35}.five-p-grid .info-panel p{margin-bottom:0;font-size:10px;line-height:1.6}.official-foundation{padding-bottom:1.5rem}.meet-walk-become{padding-top:1.5rem}
+.payment-unavailable{opacity:.68}
+body.light-theme .demo-payment-box{background:#fff9e9;border-color:#d2b55f}
+body.light-theme .demo-payment-box>div b{color:#634c12}
+body.light-theme .demo-payment-box>div small,body.light-theme .demo-payment-box>small{color:#5f594c}
+body.light-theme .demo-receipt{background:#eef8ed;color:#28602e;border-color:#a7caa7}
+body.light-theme .demo-receipt small{color:#4f624d}
+body.light-theme .demo-quick-link{color:#715619;border-color:#b49a56}
+body.light-theme .demo-quick-link:hover{background:#fff8e7}
+body.light-theme .five-p-grid .info-panel>b{background:#f5edda;color:#735910}
+@media(max-width:900px){.five-p-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.demo-payment-box{grid-template-columns:1fr}.demo-payment-box>small{grid-column:auto}.demo-payment-box .gradient-button{width:100%}.five-p-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.five-p-grid .info-panel{padding:13px}.five-p-grid .info-panel h3{font-size:12px}.five-p-grid .info-panel p{font-size:9px}.official-foundation{padding-bottom:1.25rem}.meet-walk-become{padding-top:1.25rem}}
+
+/* Tighten the long-page rhythm: sections now meet without oversized empty bands. */
+.home-page .home-section,
+.screen-page .content-section,
+.home-page .content-section{padding-top:clamp(22px,3.2vw,38px)!important;padding-bottom:clamp(22px,3.2vw,38px)!important}
+@media(max-width:700px){.home-page .home-section,.screen-page .content-section,.home-page .content-section{padding-top:22px!important;padding-bottom:22px!important}}
+
+/* Normalize vertical spacing for every top-level section on every route. */
+main>section:not(.home-hero):not(.page-intro-hero){padding-top:clamp(20px,2.8vw,34px)!important;padding-bottom:clamp(20px,2.8vw,34px)!important}
+@media(max-width:700px){main>section:not(.home-hero):not(.page-intro-hero){padding-top:20px!important;padding-bottom:20px!important}}
+body.light-theme .brand-logo{filter:none}
+
+/* Source-linked policy, archive, and store elements added during the live-site audit. */
+.legal-page .info-panel{max-width:900px;margin-inline:auto;padding:clamp(20px,3vw,34px);line-height:1.75}
+.legal-page h2{margin:24px 0 10px}.legal-page h2:first-child{margin-top:0}.legal-page h3{margin:20px 0 8px}
+.legal-page p,.legal-page li{font-size:14px;line-height:1.75}.legal-page ul{padding-left:22px}.legal-page li+li{margin-top:7px}
+.legal-page a:not(.outline-button){color:#d8b95c;text-decoration:underline;text-underline-offset:3px}
+.legal-source-note{margin-top:24px;padding-top:15px;border-top:1px solid var(--line);font-size:12px!important;color:var(--muted)}
+.legal-page .outline-button,.official-document-card .gradient-button,.official-document-card .outline-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.product-official-link{display:inline-block;margin-top:10px;color:#d8b95c;font-size:10px;font-weight:700;line-height:1.5;text-decoration:underline;text-underline-offset:3px}
+.demo-shop-note{padding:12px 14px;border-left:3px solid #d0ad52;background:var(--panel-2);color:var(--muted);font-size:12px;line-height:1.6}
+.official-category-card{display:block;color:inherit;text-decoration:none;transition:transform .2s,border-color .2s}
+.official-category-card:hover{transform:translateY(-3px);border-color:#b99b4d}
+.official-category-card .text-link{display:inline-block;margin-top:8px}
+.official-document-card{max-width:850px;margin-inline:auto}
+.official-document-card .join-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.testimony-source-link{display:inline-block;margin-top:12px}
+.footer-legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.footer-legal a:hover{color:#d8b95c}
+body.light-theme .legal-page a:not(.outline-button),body.light-theme .product-official-link{color:#775c16}
+body.light-theme .demo-shop-note{background:#f2efe8;color:#514b40}
+body.light-theme .official-category-card{color:#29251f}
+@media(max-width:560px){.legal-page .info-panel{padding:18px}.legal-page p,.legal-page li{font-size:12px}.official-document-card .join-actions{align-items:stretch;flex-direction:column}.official-document-card .join-actions a{width:100%}.footer-legal{display:flex;gap:5px;flex-wrap:wrap}}

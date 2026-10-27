@@ -1,0 +1,9 @@
+
+.preference-actions{display:flex;align-items:center;gap:6px;margin-left:4px}
+.preference-actions button{border:1px solid #34323d;background:#17161d;color:#d7d2c9;border-radius:18px;padding:7px 9px;font:600 9px var(--sans);white-space:nowrap;cursor:pointer}
+.preference-actions button:hover{border-color:#c9a84f;color:#f2cc62}
+@media(max-width:800px){.preference-actions{margin:8px 0 0;align-items:stretch}.preference-actions button{text-align:left;padding:10px 12px;border-radius:7px;font-size:11px}}
+.brand-logo{display:block;width:158px;max-height:42px;object-fit:contain;filter:brightness(0) invert(1)}
+:host-context(body.light-theme) .brand-logo{filter:none}
+@media(min-width:801px){.nav-dropdown:has(.dropdown-menu a:nth-child(8)) .dropdown-menu{max-height:70vh;overflow-y:auto;overscroll-behavior:contain}}
+@media(max-width:800px){.primary-nav.open{max-height:calc(100vh - 66px);overflow-y:auto;overscroll-behavior:contain}.brand-logo{width:145px;max-height:38px}}
