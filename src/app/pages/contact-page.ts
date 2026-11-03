@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { PreferencesService } from '../core/preferences.service';
+import { SubmissionsService } from '../core/submissions.service';
 
 @Component({
   selector: 'app-contact-page',
@@ -14,9 +15,13 @@ import { PreferencesService } from '../core/preferences.service';
       <article class="info-panel message-form-panel">
         @if (!contactSent) {
           <h2>{{ isFrench ? 'Envoyez-nous un message' : 'Send Us a Message' }}</h2><p>{{ isFrench ? 'Tous les champs marqu\u00e9s * sont obligatoires' : 'All fields marked * are required' }}</p>
-          <form (ngSubmit)="sendContact()"><div class="form-two"><label>{{ isFrench ? 'NOM COMPLET *' : 'FULL NAME *' }}<input name="contactName" [(ngModel)]="contact.name" [placeholder]="isFrench ? 'Votre nom' : 'Your name'" required></label><label>EMAIL *<input name="contactEmail" [(ngModel)]="contact.email" type="email" [placeholder]="isFrench ? 'votre@email.com' : 'your@email.com'" required></label><label>{{ isFrench ? 'T\u00c9L\u00c9PHONE' : 'PHONE' }}<input name="contactPhone" [(ngModel)]="contact.phone" placeholder="+27..."></label><label>{{ isFrench ? 'SUJET *' : 'SUBJECT *' }}<select name="contactSubject" [(ngModel)]="contact.subject" required><option value="">{{ isFrench ? 'Choisir un sujet' : 'Select a subject' }}</option><option>{{ isFrench ? 'Demande de pri\u00e8re' : 'Prayer request' }}</option><option>{{ isFrench ? 'Visiter BRAAM Family' : 'Visiting BRAAM Family' }}</option><option>{{ isFrench ? 'Demande g\u00e9n\u00e9rale' : 'General enquiry' }}</option><option>{{ isFrench ? 'Service et b\u00e9n\u00e9volat' : 'Serving and volunteering' }}</option></select></label></div><label>{{ isFrench ? 'MESSAGE *' : 'MESSAGE *' }}<textarea name="contactMessage" [(ngModel)]="contact.message" [placeholder]="isFrench ? '\u00c9crivez votre message ici...' : 'Write your message here...'" required rows="5"></textarea></label><button class="gradient-button form-submit" type="submit">{{ isFrench ? 'Envoyer le message' : 'Send Message' }} <span>\u2197</span></button></form>
+          <form name="contactForm" #form="ngForm" (ngSubmit)="onContactSubmit(form)"><div class="form-two"><label>{{ isFrench ? 'NOM COMPLET *' : 'FULL NAME *' }}<input name="contactName" [(ngModel)]="contact.name" [placeholder]="isFrench ? 'Votre nom' : 'Your name'" required></label><label>EMAIL *<input name="contactEmail" [(ngModel)]="contact.email" type="email" [placeholder]="isFrench ? 'votre@email.com' : 'your@email.com'" required></label><label>{{ isFrench ? 'T\u00c9L\u00c9PHONE' : 'PHONE' }}<input name="contactPhone" [(ngModel)]="contact.phone" placeholder="+27..."></label><label>{{ isFrench ? 'SUJET *' : 'SUBJECT *' }}<select name="contactSubject" [(ngModel)]="contact.subject" required><option value="">{{ isFrench ? 'Choisir un sujet' : 'Select a subject' }}</option><option>{{ isFrench ? 'Demande de pri\u00e8re' : 'Prayer request' }}</option><option>{{ isFrench ? 'Visiter BRAAM Family' : 'Visiting BRAAM Family' }}</option><option>{{ isFrench ? 'Demande g\u00e9n\u00e9rale' : 'General enquiry' }}</option><option>{{ isFrench ? 'Service et b\u00e9n\u00e9volat' : 'Serving and volunteering' }}</option></select></label></div><label>{{ isFrench ? 'MESSAGE *' : 'MESSAGE *' }}<textarea name="contactMessage" [(ngModel)]="contact.message" [placeholder]="isFrench ? '\u00c9crivez votre message ici...' : 'Write your message here...'" required rows="5"></textarea></label>
+            @if (showErrors()) {
+              <p class="inline-message" role="alert">{{ invalidFieldsMessage }}</p>
+            }
+            <button class="gradient-button form-submit" type="submit" [disabled]="sending()">{{ sending() ? (isFrench ? 'Envoi en cours\u2026' : 'Sending\u2026') : (isFrench ? 'Envoyer le message' : 'Send Message') }} <span>\u2197</span></button></form>
         } @else {
-          <div class="success-state"><span>\u2713</span><h2>{{ isFrench ? 'Brouillon d\u2019email pr\u00e9par\u00e9.' : 'Email draft prepared.' }}</h2><p>{{ isFrench ? 'Votre application de messagerie devrait s\u2019ouvrir avec ce message adress\u00e9 \u00e0 BRAAM Family. Envoyez l\u2019email pour finaliser votre demande.' : 'Your email app should open with this message addressed to BRAAM Family. Send the email there to complete your enquiry.' }}</p><button class="outline-button" (click)="contactSent = false">{{ isFrench ? 'Envoyer un autre message' : 'Send another message' }}</button></div>
+          <div class="success-state"><span>\u2713</span><h2>{{ isFrench ? 'Brouillon d\u2019email pr\u00e9par\u00e9.' : 'Email draft prepared.' }}</h2><p>{{ isFrench ? 'Votre application de messagerie devrait s\u2019ouvrir avec ce message adress\u00e9 \u00e0 BRAAM Family. Envoyez l\u2019email pour finaliser votre demande.' : 'Your email app should open with this message addressed to BRAAM Family. Send the email there to complete your enquiry.' }}</p><p class="success-note">{{ isFrench ? 'Envoi instantan\u00e9 \u00e0 distance : pas encore connect\u00e9 \u00e0 un serveur \u2014 le brouillon d\u2019email reste la voie officielle.' : 'Instant remote send: not connected to a server yet \u2014 the email draft remains the official path.' }}</p><button class="outline-button" (click)="resetContact()">{{ isFrench ? 'Envoyer un autre message' : 'Send another message' }}</button></div>
         }
       </article>
     </section>
@@ -26,17 +31,50 @@ import { PreferencesService } from '../core/preferences.service';
 })
 export class ContactPage {
   private readonly prefs = inject(PreferencesService);
+  private readonly submissions = inject(SubmissionsService);
   contact = { name: '', email: '', phone: '', subject: '', message: '' };
   contactSent = false;
+  readonly sending = signal(false);
+  readonly showErrors = signal(false);
 
   get isFrench() { return this.prefs.isFrench(); }
 
-  sendContact() {
+  get invalidFieldsMessage(): string {
+    return this.isFrench
+      ? 'Merci de compléter : nom, email et sujet valides, et message.'
+      : 'Please complete: name, a valid email, subject, and message.';
+  }
+
+  onContactSubmit(form: NgForm) {
+    if (!form.valid) {
+      this.showErrors.set(true);
+      return;
+    }
+    void this.sendContact();
+  }
+
+  async sendContact() {
+    this.showErrors.set(false);
+    this.sending.set(true);
+    try {
+      await this.submissions.submit('contact', { ...this.contact, channel: 'website' });
+    } catch {
+      // No server yet: mailto is the official delivery path (see PAYMENTS.md style notes).
+    } finally {
+      this.sending.set(false);
+    }
     const subject = encodeURIComponent(this.contact.subject || 'Website enquiry');
     const body = encodeURIComponent(
       `Name: ${this.contact.name}\nEmail: ${this.contact.email}\nPhone: ${this.contact.phone}\n\n${this.contact.message}`
     );
     window.location.href = `mailto:info@braamfamily.co.za?subject=${subject}&body=${body}`;
+    this.showErrors.set(false);
     this.contactSent = true;
+  }
+
+  resetContact() {
+    this.contact = { name: '', email: '', phone: '', subject: '', message: '' };
+    this.contactSent = false;
+    this.showErrors.set(false);
   }
 }
