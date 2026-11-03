@@ -159,7 +159,14 @@ body.light-theme .brand-logo{filter:none}
 .footer-legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .footer-legal a:hover{color:#d8b95c}
 body.light-theme .legal-page a:not(.outline-button),body.light-theme .product-official-link{color:#775c16}
+.error-notice{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:1000;display:flex;align-items:center;gap:14px;width:min(560px,calc(100% - 32px));padding:13px 16px;border:1px solid #7d4138;border-left:3px solid #b5544a;border-radius:10px;background:#1c1310f2;color:#eaa294;font-size:12px;line-height:1.55;box-shadow:0 14px 34px #0006}
+.error-notice>span{flex:1}
+.error-notice>button{flex:none;width:26px;height:26px;border:1px solid #7d4138;border-radius:6px;background:transparent;color:#eaa294;font-size:16px;line-height:1;cursor:pointer}
+.error-notice>button:hover{background:#2a1a16}
 body.light-theme .demo-shop-note{background:#f2efe8;color:#514b40}
 body.light-theme .inline-message{background:#fbf1ef;border-color:#d3a49c;color:#8c3627}
+body.light-theme .error-notice{background:#fffaf8f5;border-color:#d3a49c;color:#8c3627;box-shadow:0 14px 34px #0002}
+body.light-theme .error-notice>button{border-color:#d3a49c;color:#8c3627}
+body.light-theme .error-notice>button:hover{background:#f6e6e1}
 body.light-theme .official-category-card{color:#29251f}
 @media(max-width:560px){.legal-page .info-panel{padding:18px}.legal-page p,.legal-page li{font-size:12px}.official-document-card .join-actions{align-items:stretch;flex-direction:column}.official-document-card .join-actions a{width:100%}.footer-legal{display:flex;gap:5px;flex-wrap:wrap}}

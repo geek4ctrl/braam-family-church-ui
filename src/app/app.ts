@@ -4,6 +4,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PreferencesService } from './core/preferences.service';
+import { ErrorNotifierService } from './core/error-notifier.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { PreferencesService } from './core/preferences.service';
 })
 export class App {
   readonly prefs = inject(PreferencesService);
+  readonly errors = inject(ErrorNotifierService);
   menuOpen = false;
   openDropdown: string | null = null;
 
