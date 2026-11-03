@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PreferencesService } from './core/preferences.service';
 
 @Component({
   selector: 'app-home-page', standalone: true, imports: [RouterLink],
@@ -61,10 +62,8 @@ import { RouterLink } from '@angular/router';
   `
 })
 export class HomePage {
-  isFrench = localStorage.getItem('braam-language') === 'fr';
-  constructor() {
-    window.addEventListener('braam-preferences', (event: Event) => {
-      this.isFrench = (event as CustomEvent<{ language: string }>).detail.language === 'fr';
-    });
+  private readonly prefs = inject(PreferencesService);
+  get isFrench() {
+    return this.prefs.isFrench();
   }
 }
