@@ -5,6 +5,12 @@ export type Language = 'en' | 'fr';
 export type Theme = 'light' | 'dark';
 
 /**
+ * Browser-chrome color for each theme, matching the sticky header background so
+ * the mobile status/address bar tracks the light/dark switch.
+ */
+const THEME_COLORS: Record<Theme, string> = { dark: '#08080d', light: '#ffffff' };
+
+/**
  * Single source of truth for user preferences (language + theme).
  * State lives in signals, is persisted to localStorage, and applies the
  * theme/lang side effects to the document. Replaces the old
@@ -53,6 +59,9 @@ export class PreferencesService {
   private applyDocument(): void {
     this.document.documentElement.lang = this.language();
     this.document.body?.classList.toggle('light-theme', this.isLight());
+    this.document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', THEME_COLORS[this.theme()]);
   }
 }
 
