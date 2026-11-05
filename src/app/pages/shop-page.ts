@@ -9,7 +9,7 @@ import { PRODUCTS, type Product, type CartLine } from '../core/content.data';
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-  <main class="screen-page">
+  <main class="screen-page" id="main" tabindex="-1">
     <section class="page-intro-hero shop-intro"><p class="eyebrow"><span></span> {{ isFrench ? 'BOUTIQUE OFFICIELLE BRAAM FAMILY' : 'OFFICIAL BRAAM FAMILY STORE' }}</p><h1>{{ isFrench ? 'La Boutique' : 'The Shop' }}</h1><p>{{ isFrench ? 'D\u00e9couvrez les v\u00eatements et accessoires actuellement propos\u00e9s par BRAAM Family. Les prix et disponibilit\u00e9s peuvent changer ; la boutique officielle a le catalogue complet en ligne et le paiement s\u00e9curis\u00e9.' : 'Explore the current apparel and accessories listed by BRAAM Family. Prices and availability can change; the official store has the complete live catalog and secure checkout.' }}</p><a class="gradient-button" href="https://www.braamfamily.co.za/shop/" target="_blank" rel="noopener noreferrer">{{ isFrench ? 'Acheter dans la collection officielle' : 'Shop the official collection' }} <span>\u2197</span></a></section>
     <section class="content-section shop-section"><div class="shop-toolbar"><div class="filter-row">
       @for (f of productFilters; track f) {

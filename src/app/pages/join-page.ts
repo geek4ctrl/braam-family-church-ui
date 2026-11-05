@@ -9,7 +9,7 @@ import type { Member } from '../core/types';
   standalone: true,
   imports: [FormsModule],
   template: `
-  <main class="screen-page">
+  <main class="screen-page" id="main" tabindex="-1">
     <section class="page-intro-hero join-intro"><p class="eyebrow"><span></span> {{ isFrench ? 'BIENVENUE \u00c0 LA MAISON' : 'WELCOME HOME' }}</p><h1>{{ isFrench ? 'Rejoignez la' : 'Join the' }}<br><em>{{ isFrench ? 'famille BRAAM' : 'BRAAM Family' }}</em></h1><p>{{ isFrench ? 'Inscrivez-vous comme membre de la famille BRAAM. Nous aimerions savoir qui vous \u00eates et comment nous pouvons vous accompagner sur votre chemin.' : 'Register as a member of the BRAAM Family. We\u2019d love to know who you are and how we can serve you on your journey.' }}</p></section>
     <section class="join-flow content-section"><div class="stepper">
       @for (label of joinLabels; track label; let i = $index) {

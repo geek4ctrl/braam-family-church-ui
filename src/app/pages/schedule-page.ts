@@ -9,7 +9,7 @@ import { SCHEDULE_EVENTS, type ScheduleEvent } from '../core/content.data';
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-  <main class="screen-page">
+  <main class="screen-page" id="main" tabindex="-1">
     <section class="page-intro-hero"><p class="eyebrow"><span></span> {{ isFrench ? 'PROGRAMME HEBDOMADAIRE' : 'WEEKLY PROGRAMME' }}</p><h1>{{ isFrench ? 'Enseignements et' : 'Teachings &amp;' }}<br><em>{{ isFrench ? 'Calendrier des cultes' : 'Services Calendar' }}</em></h1><p>{{ isFrench ? 'Consultez les r\u00e9unions hebdomadaires actuellement r\u00e9pertori\u00e9es par BRAAM Family. Veuillez consulter le site officiel ou contacter l\u2019\u00e9glise pour les modifications et d\u00e9tails compl\u00e9mentaires.' : 'View the weekly worship gatherings currently listed by BRAAM Family. Please check the official website or contact the church for changes and additional programme details.' }}</p></section>
     <section class="content-section schedule-section"><div class="schedule-tools"><div class="filter-row">
       @for (f of scheduleFilters; track f) {

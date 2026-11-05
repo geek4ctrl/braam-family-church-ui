@@ -6,7 +6,7 @@ import { PreferencesService } from './core/preferences.service';
   selector: 'app-home-page', standalone: true, imports: [RouterLink],
   template: `
     @if(isFrench){
-      <main class="home-page">
+      <main class="home-page" id="main" tabindex="-1">
         <section class="home-hero"><div class="hero-glow"></div><div class="hero-content"><p class="eyebrow"><span></span> FONDÉE EN 2009 · JOHANNESBURG, AFRIQUE DU SUD</p><h1>Une <em>famille</em><br>enflammée</h1><p class="hero-intro">Des croyants au regard renouvelé et éveillé, passionnés par la découverte du dessein que Dieu a pour chacun.</p><div class="hero-actions"><a class="gradient-button" routerLink="/join">Découvrir notre famille <span>↗</span></a><a class="outline-button" routerLink="/vision">Notre vision et mission</a></div></div><a class="hero-scroll" href="#qui-sommes-nous">DÉFILER <span>↓</span></a></section>
         <div class="ticker"><div><span>B.R.A.A.M.</span><strong>Des croyants au regard renouvelé et éveillé</strong><small>Dimanche 10 h–12 h 30 · Lundi 18 h–20 h 30 · Randburg</small></div></div>
         <section id="qui-sommes-nous" class="home-section who-section"><div class="section-grid"><div><p class="eyebrow"><span></span> NOTRE FAMILLE</p><h2>Qui sommes-nous ?</h2><p class="body-copy">Fondée en 2009 à Johannesburg, BRAAM Family Church est une communauté vivante de croyants unis par leur amour pour Jésus-Christ.</p><p class="gold-copy">« Un feu de communion ; une révolution de l’amour expressif de Dieu ; une menace pour les ténèbres. »</p><div class="stats-row"><div><small>FONDÉE</small><b>2009</b></div><div><small>LIEU</small><b>Randburg, Johannesburg</b></div><div><small>RENCONTRES</small><b>Dimanche et lundi</b></div><div><small>HORAIRE</small><b>10 h et 18 h</b></div></div><a class="text-link" routerLink="/about">En savoir plus sur nous <span>→</span></a></div><div class="who-visual"><picture><source type="image/webp" srcset="/images/official-family-gathering.webp"><img src="/images/official-family-gathering.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Les membres de BRAAM Family réunis lors d’un rassemblement"></picture></div></div></section>
@@ -14,7 +14,7 @@ import { PreferencesService } from './core/preferences.service';
         <section class="center-cta"><h2>Vous avez votre place <em>ici</em></h2><p>Quel que soit votre parcours, il y a une place pour vous dans la famille BRAAM.</p><a class="gradient-button" routerLink="/schedule">Nous rendre visite <span>↗</span></a><a class="outline-button" routerLink="/donate">Faire un don</a></section>
       </main>
     }@else{
-    <main class="home-page">
+    <main class="home-page" id="main" tabindex="-1">
       <section class="home-hero">
         <div class="hero-glow"></div><div class="hero-content">
           <p class="eyebrow"><span></span> {{isFrench ? 'FONDÉE EN 2009 · JOHANNESBURG, AFRIQUE DU SUD' : 'FOUNDED 2009 · JOHANNESBURG, SOUTH AFRICA'}}</p>

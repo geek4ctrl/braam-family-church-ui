@@ -8,7 +8,7 @@ import { SOCIAL_LINKS } from '../core/content.data';
   standalone: true,
   imports: [RouterLink],
   template: `
-  <main class="screen-page">
+  <main class="screen-page" id="main" tabindex="-1">
     <section class="page-intro-hero"><p class="eyebrow"><span></span> {{ isFrench ? 'RESTEZ CONNECT\u00c9S' : 'STAY CONNECTED' }}</p><h1>{{ isFrench ? 'Retrouvez-nous' : 'Find Us' }}<br><em>{{ isFrench ? 'partout' : 'Everywhere' }}</em></h1><p>{{ isFrench ? 'Suivez BRAAM Family sur toutes les plates-formes \u2013 ne manquez jamais un enseignement, un t\u00e9moignage ou un moment de notre communaut\u00e9.' : 'Follow BRAAM Family across all platforms \u2014 never miss a teaching, a testimony, or a moment from our community.' }}</p></section>
     <section class="content-section"><div class="three-cards connect-cards">
       @for (s of socialLinks; track s.name) {

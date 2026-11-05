@@ -170,3 +170,18 @@ body.light-theme .error-notice>button{border-color:#d3a49c;color:#8c3627}
 body.light-theme .error-notice>button:hover{background:#f6e6e1}
 body.light-theme .official-category-card{color:#29251f}
 @media(max-width:560px){.legal-page .info-panel{padding:18px}.legal-page p,.legal-page li{font-size:12px}.official-document-card .join-actions{align-items:stretch;flex-direction:column}.official-document-card .join-actions a{width:100%}.footer-legal{display:flex;gap:5px;flex-wrap:wrap}}
+
+/*
+ * Accessibility.
+ * Kept last on purpose: the `outline:none` in the shared form-control rule has
+ * the same specificity as the `:focus-visible` rules below, so source order is
+ * what restores a visible ring to the checkout and detail-modal fields.
+ * Skip link uses transform rather than left:-9999px so it never creates
+ * horizontal scroll, and relies on theme tokens so it adapts in light mode.
+ */
+.skip-link{position:fixed;top:10px;left:10px;z-index:200;transform:translateY(-220%);padding:12px 16px;border:1px solid var(--gold);border-radius:8px;background:var(--panel);color:var(--text);font-size:12px;font-weight:600;box-shadow:0 10px 26px #0009}
+.skip-link:focus{transform:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+/* The skip-link target is focused programmatically; it is not a control, so it must not draw a ring around the whole page. */
+main:focus{outline:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

@@ -6,7 +6,7 @@ import { PREACHING_CATEGORIES } from '../core/content.data';
   selector: 'app-preachings-page',
   standalone: true,
   template: `
-  <main class="screen-page">
+  <main class="screen-page" id="main" tabindex="-1">
     <section class="page-intro-hero textured-hero"><p class="eyebrow"><span></span> {{ isFrench ? 'LA PAROLE PRÊCHÉE' : 'THE WORD PREACHED' }}</p><h1>{{ isFrench ? 'Prédications' : 'Preachings' }}</h1><p>{{ isFrench ? 'Parcourez les catégories de prédications publiées sur le site officiel de BRAAM Family. Les nouveaux messages et disponibilités sont maintenus dans l\u2019archive en ligne.' : 'Browse the preaching categories published on the official BRAAM Family website. New messages and availability are maintained in the live archive.' }}</p></section>
     <section class="content-section"><div class="three-cards sermon-grid">
       @for (category of categories; track category.url) {
