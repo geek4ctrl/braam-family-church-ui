@@ -1,8 +1,10 @@
 /*
  * BRAAM Family Church website
  */
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { PreferencesService } from './core/preferences.service';
+import { ErrorNotifierService } from './core/error-notifier.service';
 
 @Component({
   selector: 'app-root',
@@ -11,28 +13,24 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
+  readonly prefs = inject(PreferencesService);
+  readonly errors = inject(ErrorNotifierService);
   menuOpen = false;
   openDropdown: string | null = null;
-  isLight = localStorage.getItem('braam-theme') === 'light';
-  isFrench = localStorage.getItem('braam-language') === 'fr';
 
-  constructor() {
-    document.body.classList.toggle('light-theme', this.isLight);
-    document.documentElement.lang = this.isFrench ? 'fr' : 'en';
-    window.dispatchEvent(new CustomEvent('braam-preferences', { detail: { language: this.isFrench ? 'fr' : 'en' } }));
+  get isLight() {
+    return this.prefs.isLight();
+  }
+  get isFrench() {
+    return this.prefs.isFrench();
   }
 
   toggleTheme() {
-    this.isLight = !this.isLight;
-    localStorage.setItem('braam-theme', this.isLight ? 'light' : 'dark');
-    document.body.classList.toggle('light-theme', this.isLight);
+    this.prefs.toggleTheme();
   }
 
   toggleLanguage() {
-    this.isFrench = !this.isFrench;
-    localStorage.setItem('braam-language', this.isFrench ? 'fr' : 'en');
-    document.documentElement.lang = this.isFrench ? 'fr' : 'en';
-    window.dispatchEvent(new CustomEvent('braam-preferences', { detail: { language: this.isFrench ? 'fr' : 'en' } }));
+    this.prefs.toggleLanguage();
   }
 
   toggleDropdown(name: string) { this.openDropdown = this.openDropdown === name ? null : name; }

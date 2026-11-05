@@ -18,6 +18,18 @@
   <script src="app-config.js"></script>
 </head>
 <body>
+  <script>
+    /*
+     * Apply the saved theme before first paint. PreferencesService can only set
+     * the class once Angular has downloaded and bootstrapped, which would make
+     * every light-theme visit flash the dark theme first.
+     */
+    try {
+      if (localStorage.getItem('braam-theme') === 'light') document.body.classList.add('light-theme');
+    } catch (err) {
+      /* storage unavailable (private mode) — stay on the default dark theme */
+    }
+  </script>
   <app-root></app-root>
 </body>
 </html>
