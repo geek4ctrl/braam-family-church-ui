@@ -69,7 +69,19 @@ body.light-theme .mobile-menu{background:#f7f5f0;border-color:#ddd8ce}body.light
 body.light-theme .dropdown-menu,body.light-theme .info-panel,body.light-theme .feature-card,body.light-theme .media-card,body.light-theme .testimony-card,body.light-theme .promo-card,body.light-theme .stay-row,body.light-theme .cart-drawer,body.light-theme .detail-modal,body.light-theme .checkout-modal,body.light-theme .product-modal{background:#fff;border-color:#e2ded4;color:#29251f}
 body.light-theme .info-panel p,body.light-theme .feature-card p,body.light-theme .media-card p,body.light-theme .body-copy,body.light-theme .footer-brand-block>p,body.light-theme .giving-side ul,body.light-theme .contact-tile>b,body.light-theme .contact-tile>a,body.light-theme .give-online>p{color:#5d584f}
 body.light-theme .content-section,body.light-theme .home-section{color:#29251f}
-body.light-theme .page-intro-hero:not(.donate-hero){background-color:#eeece6;color:#29251f}
+body.light-theme .page-intro-hero:not(.donate-hero){background-color:#eeece6;background-image:none;color:#29251f}
+/*
+ * The dark masthead rules declare the `background` shorthand, so their
+ * background-image (gradients / a near-opaque #08080d scrim over a photo) would
+ * otherwise still paint under a light text color. `background-image:none` above
+ * flattens them; the three photo mastheads then re-declare the shorthand with a
+ * light scrim so their imagery survives.
+ */
+body.light-theme .page-intro-hero.workers-hero{background:linear-gradient(90deg,#f6f4ef 0%,#f6f4efe8 45%,#f6f4ef8c 100%),url('/images/workers-hero.jpg') right center/cover no-repeat,#eeece6}
+body.light-theme .page-intro-hero.about-hero{background:linear-gradient(90deg,#f6f4ef 0%,#f6f4efe8 45%,#f6f4ef8c 100%),url('/images/about-hero.jpg') right center/cover no-repeat,#eeece6}
+body.light-theme .page-intro-hero.shop-intro{background:linear-gradient(90deg,#f6f4ef 0%,#f6f4efe8 45%,#f6f4ef8c 100%),url('/images/shop-hero.jpg') right center/cover no-repeat,#eeece6}
+body.light-theme .page-intro-hero .eyebrow{color:#775c16}
+body.light-theme .primary-nav .donate-nav{background:#211813;border-color:#4a3628;color:#dcba51}
 body.light-theme .page-intro-hero>p:not(.eyebrow),body.light-theme .subcopy{color:#5d584f}
 body.light-theme .bank-panel>div{border-color:#e1ddd5}body.light-theme .bank-panel>div b{color:#29251f}body.light-theme .bank-panel>div span{color:#6c665d}
 body.light-theme .amount-chips button,body.light-theme .preference-actions button{background:#f6f4ef;color:#39352e;border-color:#d8d3c9}
@@ -170,6 +182,86 @@ body.light-theme .error-notice>button{border-color:#d3a49c;color:#8c3627}
 body.light-theme .error-notice>button:hover{background:#f6e6e1}
 body.light-theme .official-category-card{color:#29251f}
 @media(max-width:560px){.legal-page .info-panel{padding:18px}.legal-page p,.legal-page li{font-size:12px}.official-document-card .join-actions{align-items:stretch;flex-direction:column}.official-document-card .join-actions a{width:100%}.footer-legal{display:flex;gap:5px;flex-wrap:wrap}}
+
+/*
+ * Light theme coverage for components that hard-code a dark surface or light
+ * text in their base rule. The `body.light-theme` token swap only reaches
+ * var(--…) consumers, so anything written with a literal hex needs a partner
+ * override here. Gold accents remap to #775c16 — the value the pre-existing
+ * light rules already use — because the #d8b95c family only clears contrast on
+ * dark. Selected chips keep the designed dark-brown pill for affordance.
+ * Intentionally left dark: photo overlay chips (.picture-tag) and the
+ * brand-coloured social cards on the connect page.
+ */
+/* Shop: product grid, cart, modals */
+body.light-theme .product-card{background:#fff;border-color:#e2ded4}
+body.light-theme .product-image,body.light-theme .modal-x{background:#f0eee8}
+body.light-theme .modal-x{color:#3a3630}
+body.light-theme .product-buy>b,body.light-theme .quote-byline b{color:#29251f}
+body.light-theme .product-price,body.light-theme .cart-bar strong,body.light-theme .cart-line strong,body.light-theme .review-lines b,body.light-theme .drawer-total strong,body.light-theme .checkout-total strong,body.light-theme .product-info>small{color:#775c16}
+body.light-theme .cart-bar{background:#fffffff7;border-color:#e2ded4;box-shadow:0 15px 50px #0000001c}
+body.light-theme .cart-bar>div small,body.light-theme .cart-line>div small{color:#6c665d}
+body.light-theme .cart-line{border-bottom-color:#e8e5dd}
+body.light-theme .qty-control,body.light-theme .modal-meta-row,body.light-theme .empty-state{color:#5d584f}
+body.light-theme .modal-meta-row{border-block-color:#e8e5dd}
+body.light-theme .empty-state{border-color:#d8d3c9;color:#6c665d}
+body.light-theme .empty-photo{background:radial-gradient(ellipse at 50% 120%,#efe6d8 0,transparent 58%),linear-gradient(135deg,#f0eee8,#e3e0d8)}
+body.light-theme .success-mark,body.light-theme .success-state>span{background:#e7efe1;color:#3f6d2f}
+/* Chips, filters, week/day selectors, quantity steppers */
+body.light-theme .filter-row button,body.light-theme .view-switch button,body.light-theme .week-days button,body.light-theme .qty-control button,body.light-theme .center-button{background:#f6f4ef;border-color:#d8d3c9;color:#5d584f}
+body.light-theme .center-button{color:#775c16}
+body.light-theme .filter-row button.active,body.light-theme .filter-row button:hover,body.light-theme .view-switch button.active,body.light-theme .week-days button.selected{background:#211813;border-color:#4a3628;color:#e2bd51}
+/* Icon tiles and gold accents shared across pages */
+body.light-theme .card-symbol,body.light-theme .small-icon,body.light-theme .give-online-title>span,body.light-theme .avatar,body.light-theme .leader-avatar{background:#f6f1e5;border-color:#e3d5b4;color:#775c16}
+body.light-theme .leader-avatar-img{border-color:#d8c48a}
+body.light-theme .card-more,body.light-theme .listen-link,body.light-theme .media-meta,body.light-theme .story-grid strong,body.light-theme .team-emoji,body.light-theme .live-badge,body.light-theme .session-index,body.light-theme .session-row>small,body.light-theme .session-row em,body.light-theme .pillar,body.light-theme .pillar small,body.light-theme .event-time b,body.light-theme .legend-panel>small,body.light-theme .give-quote small,body.light-theme .week-days button>span.has-event,body.light-theme .org-leader small,body.light-theme .leaders-section .leader small{color:#775c16}
+body.light-theme .event-arrow{color:#a8842f}
+body.light-theme .muted-link,body.light-theme .follow-panel a{color:#5d584f}
+/* Media placeholders and sermon cards */
+body.light-theme .media-photo,body.light-theme .vision-picture{background:linear-gradient(140deg,#e9e6df,#d8d5cc)}
+body.light-theme .media-photo>span{background:#fffffff2;color:#775c16}
+body.light-theme .featured-sermon{background:linear-gradient(130deg,#fff,#f6f4ef);border-color:#e2ded4}
+body.light-theme .featured-sermon em,body.light-theme .sermon-grid .media-card>em,body.light-theme .home-sermon-card .media-scripture{color:#7a6a3f}
+body.light-theme .featured-sermon>div>small:not(.gold-label),body.light-theme .sermon-grid .media-card>small:not(.media-meta),body.light-theme .home-sermon-card .media-date,body.light-theme .media-meta span{color:#5d584f}
+/* Schedule */
+body.light-theme .schedule-event{background:#fff;border-color:#e2ded4}
+body.light-theme .legend-panel{border-color:#e2ded4;color:#5d584f}
+body.light-theme .event-time small,body.light-theme .event-body>small,body.light-theme .week-days button>span{color:#6c665d}
+/* Join flow and form labels */
+body.light-theme .stepper>div{color:#6c665d}
+body.light-theme .stepper>div.current{color:#775c16}
+body.light-theme .stepper>div+div:before,body.light-theme .join-flow .stepper>div+div:before{background:#d8d3c9}
+body.light-theme .join-flow .stepper>div>span{background:#fff;border-color:#d8d3c9;color:#5d584f}
+body.light-theme .interest-grid label{background:#f6f4ef;border-color:#d8d3c9;color:#39352e}
+body.light-theme .join-form label,body.light-theme .message-form-panel label,body.light-theme .checkout-modal label,body.light-theme .detail-modal label{color:#5d584f}
+/* Donate */
+body.light-theme .bank-details{background:#faf8f3;border-color:#e2ded4}
+/* Testimonies, workers, contact, organigram */
+body.light-theme .quote-byline small,body.light-theme .quote-person small,body.light-theme .contact-tile>small,body.light-theme .follow-panel>small,body.light-theme .contact-tile>span:not(.small-icon),body.light-theme .give-online-title small,body.light-theme .leaders-section .leader p{color:#6c665d}
+body.light-theme .testimony-feature>div p{color:#3a3630}
+body.light-theme .role-tags span{border-color:#d8d3c9;color:#5d584f}
+/* Header and footer accent links */
+body.light-theme .primary-nav>a:hover,body.light-theme .nav-dropdown>button:hover,body.light-theme .primary-nav .nav-active,body.light-theme .footer-credit a,body.light-theme .footer-credit a b,body.light-theme .footer-legal a:hover{color:#775c16}
+body.light-theme .footer-credit a:hover{color:#55400f}
+/*
+ * Last audit round: accents that sit on a surface the light rules already
+ * whiten, so their literal dark-chip colors and saturated brand hues were the
+ * only thing left unreadable. Brand hues are darkened to clear 4.5:1 as small
+ * text; the dark card backgrounds themselves are already overridden.
+ */
+body.light-theme .promo-card>span,body.light-theme .event-category,body.light-theme .social-icon{background:#f6f1e5;color:#775c16}
+body.light-theme .promo-orange>span{background:#f7e6da;color:#a8410e}
+body.light-theme .connect-chips a,body.light-theme .connect-chips span{border-color:#d8d3c9;color:#39352e}
+body.light-theme .connect-chips a:hover{border-color:#b3903c;color:#775c16}
+body.light-theme .stay-row .connect-chips a:nth-child(1){border-color:#c9d8ef;color:#1a5fc4}
+body.light-theme .stay-row .connect-chips a:nth-child(2){border-color:#c6e3d2;color:#12763f}
+body.light-theme .social-card.facebook .social-icon,body.light-theme .social-card.facebook>b,body.light-theme .social-card.facebook>small{color:#1a5fc4}
+body.light-theme .social-card.whatsapp .social-icon,body.light-theme .social-card.whatsapp>b,body.light-theme .social-card.whatsapp>small{color:#12763f}
+body.light-theme .social-card.instagram .social-icon,body.light-theme .social-card.instagram>b,body.light-theme .social-card.instagram>small{color:#b02462}
+body.light-theme .social-card.youtube .social-icon,body.light-theme .social-card.youtube>b,body.light-theme .social-card.youtube>small{color:#c81f1f}
+body.light-theme .social-card.email .social-icon,body.light-theme .social-card.email>b,body.light-theme .social-card.email>small{color:#775c16}
+body.light-theme .social-card.phone .social-icon,body.light-theme .social-card.phone>b,body.light-theme .social-card.phone>small{color:#5d584f}
+body.light-theme .page-intro-hero.vision-hero h1 em{color:#b5450d}
 
 /*
  * Accessibility.

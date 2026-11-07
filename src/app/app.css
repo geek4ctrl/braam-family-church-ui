@@ -2,6 +2,13 @@
 .preference-actions{display:flex;align-items:center;gap:6px;margin-left:4px}
 .preference-actions button{border:1px solid #34323d;background:#17161d;color:#d7d2c9;border-radius:18px;padding:7px 9px;font:600 9px var(--sans);white-space:nowrap;cursor:pointer}
 .preference-actions button:hover{border-color:#c9a84f;color:#f2cc62}
+/*
+ * Component styles are injected after the global stylesheet, so this scoped rule
+ * beats `body.light-theme .preference-actions button` in styles.css on a
+ * specificity tie. The light-theme overrides for the shell must live here.
+ */
+:host-context(body.light-theme) .preference-actions button{border-color:#d8d3c9;background:#f6f4ef;color:#39352e}
+:host-context(body.light-theme) .preference-actions button:hover{border-color:#c9a84f;color:#775a17}
 @media(max-width:800px){.preference-actions{margin:8px 0 0;align-items:stretch}.preference-actions button{text-align:left;padding:10px 12px;border-radius:7px;font-size:11px}}
 .brand-logo{display:block;width:158px;max-height:42px;object-fit:contain;filter:brightness(0) invert(1)}
 :host-context(body.light-theme) .brand-logo{filter:none}
